@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeus Shop</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0b0014;
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(90deg, #7b2ff7, #f107a3);
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 10px #f107a3;
+    }
+    .product-container {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+    .product-card {
+      background-color: #1a0026;
+      border: 2px solid #7b2ff7;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      max-width: 300px;
+      box-shadow: 0 0 20px #7b2ff7;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .product-card h2 {
+      margin: 15px 0 10px;
+      color: #f107a3;
+      text-shadow: 0 0 10px #f107a3;
+    }
+    .product-card p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .product-card button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #7b2ff7, #f107a3);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #7b2ff7;
+      transition: transform 0.2s;
+    }
+    .product-card button:hover {
+      transform: scale(1.05);
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #1a0026;
+      border: 2px solid #7b2ff7;
+      border-radius: 15px;
+      display: flex;
+      max-width: 800px;
+      width: 90%;
+      padding: 20px;
+      box-shadow: 0 0 30px #7b2ff7;
+      color: #fff;
+      flex-direction: row;
+      text-align: left;
+      position: relative;
+    }
+    .modal-content img {
+      max-width: 40%;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+    .modal-content h3 {
+      color: #f107a3;
+    }
+    .modal-content p {
+      color: #ccc;
+    }
+    /* Cruz de cierre personalizada */
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #f107a3;
+      text-shadow: 0 0 10px #7b2ff7;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .close-btn:hover {
+      transform: scale(1.2);
+      color: #fff;
+    }
+    .buy-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #7b2ff7, #f107a3);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #7b2ff7;
+      transition: transform 0.2s;
+    }
+    .buy-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>Zeus Shop</header>
+
+  <div class="product-container">
+    <div class="product-card">
+      <img src="nata.jpg" alt="Natatyson">
+      <h2>Natatyson</h2>
+      <p>Peruano entrenado para obedecer.</p>
+      <button onclick="openModal()">Ver</button>
+    </div>
+  </div>
+
+  <!-- Modal de Información -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <img src="nata.jpg" alt="Natatyson">
+      <div>
+        <h3>Natatyson</h3>
+        <p><strong>Descripción:</strong> Esclavo peruano de primera calidad, perfecto para cualquier tipo de trabajo, al ser peruano sabe hacer de todo gracias a su origen.</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Resistencia: ★★★★★</li>
+          <li>Velocidad: ★★★★☆</li>
+          <li>Inteligencia: ★☆☆☆☆</li>
+            <li>Obediencia: ★★★★★</li>
+            <li>Lealtad: ★★★★★</li>
+            <li>Fuerza: ★★★★☆</li>
+            <li>Habilidad: ★★★☆☆</li>
+            <li>Agilidad: ★★★☆☆</li>
+            <li>Capacidad de trabajo: ★★★★★</li>
+            <li>Capacidad de aprendizaje: ★★★☆☆</li>
+            <li>Capacidad de adaptación: ★★★☆☆</li>
+          <li>Incluye certificado de nacionalidad Peruana</li>
+        </ul>
+        <button class="buy-btn" onclick="openBuyModal()">Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Compra -->
+  <div class="modal" id="buyModal">
+    <div class="modal-content" style="flex-direction: column; text-align: center;">
+      <span class="close-btn" onclick="closeBuyModal()">&times;</span>
+      <h3>¡Producto Vendido!</h3>
+      <p>Este producto ya ha sido vendido a Z**s</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('productModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('productModal').style.display = 'none';
+    }
+    function openBuyModal() {
+      document.getElementById('productModal').style.display = 'none';
+      document.getElementById('buyModal').style.display = 'flex';
+    }
+    function closeBuyModal() {
+      document.getElementById('buyModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
